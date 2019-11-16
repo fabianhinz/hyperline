@@ -1,7 +1,7 @@
 import hostname from './hostname'
 import ip from './ip'
 import memory from './memory'
-// Import Uptime from './uptime'
+import Uptime from './uptime'
 import cpu from './cpu'
 import network from './network'
 import battery from './battery'
@@ -10,4 +10,4 @@ import battery from './battery'
 import spotify from './spotify'
 import brand from './brand'
 
-export default [hostname, ip, memory, battery, cpu, network, spotify, brand]
+export default [hostname, ip, memory, battery, cpu, network, spotify, brand, Uptime]
