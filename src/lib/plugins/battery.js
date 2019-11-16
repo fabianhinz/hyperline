@@ -5,6 +5,7 @@ import React from 'react'
 import Component from 'hyper/component'
 import leftPad from 'left-pad'
 import BatteryIcon from './battery/battery-icon'
+import { battery } from 'systeminformation'
 
 export default class Battery extends Component {
   static displayName() {
@@ -16,7 +17,8 @@ export default class Battery extends Component {
 
     this.state = {
       charging: false,
-      percentage: '--'
+      percentage: '--',
+      cycleCount: 0
     }
 
     this.batteryEvents = [ 'chargingchange', 'chargingtimechange', 'dischargingtimechange', 'levelchange' ]
@@ -35,6 +37,8 @@ export default class Battery extends Component {
   }
 
   componentDidMount() {
+    battery().then(({cyclecount}) => this.setState({cycleCount: cyclecount}))
+
     navigator.getBattery().then(battery => {
       this.setBatteryStatus(battery)
 
@@ -58,7 +62,7 @@ export default class Battery extends Component {
     return (
       <div className='wrapper'>
         <BatteryIcon charging={charging} percentage={Number(percentage)} /> {leftPad(percentage, 2, 0)}%
-
+        ({this.state.cycleCount})
         <style jsx>{`
           .wrapper {
             display: flex;
