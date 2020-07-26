@@ -9,5 +9,6 @@ import battery from './battery'
 // Import Docker from './docker'
 import spotify from './spotify'
 import brand from './brand'
+import fritzbox from './fritzbox'
 
-export default [hostname, ip, memory, battery, cpu, network, spotify, brand, Uptime]
+export default [hostname, ip, memory, battery, cpu, network, spotify, brand, Uptime, fritzbox]
